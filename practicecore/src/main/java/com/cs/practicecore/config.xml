@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+               http://www.springframework.org/schema/context  
+               http://www.springframework.org/schema/context/spring-context-3.0.xsd"> 
+               <!-- <bean class="com.cs.practicecore.Student" name="s1" p:studentId="102" p:name="jb" p:city="sp"> -->
+               <!-- <bean class="com.cs.practicecore.Student" name="s1">
+               <property name="studentId" value="101"/>
+               <property name="name" value="csm"/>
+				<property name="city" value="bbs"/>               
+               </bean>--> 
+               <!-- <bean class="com.cs.practicecore.Student" name="s2" p:studentId="101" p:name="csm" p:city="bbs"/> -->
+               <bean class="com.cs.practicecore.Subject" name="sub" p:subId="111" p:subName="Math" />
+               <bean class="com.cs.practicecore.Student" name="s1">
+               <property name="studentId" value="101"/>
+               <property name="name" value="csm"/>
+               <property name="city" value="bbs"/>
+               <property name="subject" ref="sub"/>
+               <property name="marks" >
+               <list>
+               <value>90</value>
+               <value>75</value>
+               <value>85</value>
+               </list>
+               </property>
+               <property name="addresses">
+               <set>
+               <value>bbs</value>
+               <value>ctc</value>
+               <value>bls</value>
+               </set>
+               </property >
+               
+               <property name="courses">
+               <map>
+               <entry key="java" value="3 mo"/>
+               <entry key="python" value="1 mo"/>
+               <entry key="spring" value="2 mo"/>
+               </map>
+               </property>
+               
+               </bean>
+               
+               
+               </beans>

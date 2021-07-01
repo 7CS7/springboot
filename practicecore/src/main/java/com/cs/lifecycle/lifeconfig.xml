@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+               http://www.springframework.org/schema/context  
+               http://www.springframework.org/schema/context/spring-context-3.0.xsd"> 
+               
+              <context:annotation-config /> 
+               <!--  xml based  -->
+             <!-- <bean class="com.cs.lifecycle.Samosa" name="s1" init-method="init" destroy-method="destroy" p:price="8"/>
+              -->
+              <!--  <bean class="com.cs.lifecycle.Pepsi" name="p1" p:price="50"/> -->
+               <bean class="com.cs.lifecycle.Glass" name="g1" p:price="25" />
+               </beans>

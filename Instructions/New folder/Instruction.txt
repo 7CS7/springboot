@@ -1,0 +1,95 @@
+1.create a new maven project and add archeotype which is ending with webapp
+2.In index .jsp error is coming to solve this click on build path>add library>server runtime>tomcat
+3.add dependencies: 
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>5.3.3</version>
+</dependency>
+    <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-webmvc</artifactId>
+    <version>5.2.4.RELEASE</version>
+</dependency>
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-orm</artifactId>
+    <version>5.2.3.RELEASE</version>
+</dependency>
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>5.4.2.Final</version>
+</dependency>
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.22</version>
+</dependency>
+4.then update maven project with internet on
+5.configure dispatcherServlet in web.xml
+go to any class ctrl+shift+t search dispatcherservlet and copy the package.class
+<servlet>
+  <servlet-name>spring</servlet-name>
+  <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>spring</servlet-name>
+  <url-pattern>/</url-pattern>
+  </servlet-mapping>
+6.create an xml file with the name serveletname-servlet
+7.copy bean part in spring-servlet.xml
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+     xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+               http://www.springframework.org/schema/context  
+               http://www.springframework.org/schema/context/spring-context.xsd"> 
+    
+    <context:component-scan base-package="springmvc"/>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+       name="viewResolver">
+       <property name="prefix" value="/WEB-INF/views/" />
+       <property name="suffix" value=".jsp"></property>
+       </bean>        
+   </beans>
+
+and configure view resolver and give the package name of controller in base-package and prefix value
+8.Add DataSource details in spring-servlet.xml
+<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
+       name="ds" >
+       <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+       <property name="url" value="jdbc:mysql://localhost:3306/prod"/>
+       <property name="username" value="root"/>
+       <property name="password" value="csm@2020"/>
+       
+       </bean> 
+9.configure localsession Factory bean and hibernateTemplate
+</bean>
+       <bean class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" name="factory">
+       <property name="dataSource" ref="ds"/>
+       <property name="hibernateProperties">
+       <props>
+       <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+       <prop key="hibernate.show_sql">true</prop>
+       <prop key="hibernate.hbm2ddl.auto">update</prop>
+       
+       </props>
+       
+       </property>
+       <property name="annotatedClasses">
+       <list>
+       <value></value>
+       </list>
+       </property>
+       
+       </bean>
+       <bean class="org.springframework.orm.hibernate5.HibernateTemplate" name="hibernateTemplate">
+       <property name="sessionFactory" ref="factory"></property>
+       </bean>
+10.create dao class and then add entity class name in spring-servlet.xml
+11.add funvtion in main controller and view
+12.to add bean we have to use @component and we have to add <context:component-scan base-package=""> in config.xml

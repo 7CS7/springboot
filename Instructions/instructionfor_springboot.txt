@@ -1,0 +1,6 @@
+in eclipse go to help/marketplace/search spring tool 4 and install
+open spring initializr and give all the informations,dependencies and generate the project,import into eclipse 
+Add a controller and create a method to view,then add ajsp file,set the properties inside application.properties like port,prefix,suffix
+add dependency of jasper in pom.xml so that the jsp will not get downloaded but will be executed and displayed,lastly run the project as springboot app
+a string can also be returned by using annotation Responsebody
+solution for not a managed type add entity scan annotation in application calass and give package name

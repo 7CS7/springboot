@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd" 
+xmlns:context="http://www.springframework.org/schema/context" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://www.springframework.org/schema/beans">
+
+<!-- Define your beans here -->
+<context:property-placeholder location="classpath:sports.properties"/>
+<bean id="forSer" class="com.cs.springdemo.HappyFortuneService"></bean>
+<bean id="myCoach" class="com.cs.springdemo.CricketCoach"> 
+<constructor-arg ref="forSer"/></bean>
+<!-- <bean id="myCoach2" class="com.cs.springdemo.FootballCoach"></bean> -->
+<bean id="hockey" class="com.cs.springdemo.HockeyCoach">
+<property name="fortuneService" ref="forSer"></property>
+<property name="email" value="indianhockeyteam@gmail.com" ></property>
+<property name="team" value="indian hockey team"></property>
+<property name="name" value="${name}"></property>
+<property name="id" value="${id}"></property>
+</bean>
+</beans>

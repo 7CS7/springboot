@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container text-centered">
+<h2>Sign up form</h2>
+<form action="#" th:action="@{/process_register}" method="POST" th:object="${user}">
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control col-4" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{email}" required
+    minlength="10" maxlength="25">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control col-4" id="exampleInputPassword1" th:field="*{password}" required 
+    minlength="7" maxlength="15">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">First Name</label>
+    <input type="text" class="form-control col-4" id="exampleInputEmail1"  th:field="*{firstName}" required
+    minlength="5" maxlength="25">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInput" class="form-label">Last Name</label>
+    <input type="text" class="form-control col-4" id="exampleInput"  th:field="*{lastName}" required
+    minlength="5" maxlength="25">
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Sign up</button>
+</form>
+
+</div>
+</body>
+</html>
